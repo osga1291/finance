@@ -15,7 +15,12 @@ public class Server {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         TransactionController transactionController = new TransactionController();
+        AccountController accountController = new AccountController();
         app.get("/transaction/all", transactionController::fetchAll);
         app.get("transaction", transactionController::getByDate);
+        app.get("/account/all", accountController::fetchAll);
+        app.get("/timeline", transactionController::getTimeline);
+        app.get("/transaction/field", transactionController::getByField);
+        app.patch("/transaction/update", transactionController::updateCategory);
     }
 }

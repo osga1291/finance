@@ -16,7 +16,7 @@ function CardComponent({ title, data }) {
             </tr>
           </thead>
           <tbody>
-            {data.slice(0,10).map((item, index) => (
+            {data.map((item, index) => (
               <tr key={index} className="card-table-row">
                 <td>{item.date}</td>
                 <td>{item.amount}</td>

@@ -1,6 +1,7 @@
 package com.finance.sheets;
 
 import com.finance.models.Account;
+import com.finance.models.Model;
 import com.finance.models.Transaction;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -57,13 +58,9 @@ public class SheetWorker {
       
     }
     
-    public List<Transaction> getAll(){
+    public List<Model> getTrasactions(){
       Map<String, Account> accounts = getAccounts();
-      return getTrasactions(accounts);
-    }
-
-    public List<Transaction> getTrasactions(Map <String, Account> accounts){
-      ArrayList<Transaction> transactions = new ArrayList<>();
+      ArrayList<Model> transactions = new ArrayList<>();
       try{
         List<List<Object>> resp = GetValues("Transactions!A2:H");
 
@@ -81,7 +78,7 @@ public class SheetWorker {
     }
 
     public Map<String, Account> getAccounts(){
-      ArrayList<Account> accounts = new ArrayList<>();
+      ArrayList<Model> accounts = new ArrayList<>();
       Map<String, Account> accountMap = new HashMap<>();
       try{
         List<List<Object>> resp = GetValues("Accounts!A2:P");
